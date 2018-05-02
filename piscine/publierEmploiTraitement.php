@@ -21,6 +21,7 @@
             $poste=$_POST["poste"];
             $remuneration=$_POST["remuneration"];
             $duree=$_POST["duree"];
+            $commentaire=$_POST["commentaire"];
 
             $visibilite=$_POST["visibilite"];
 
@@ -30,11 +31,16 @@
             else{$visibilite = 1;}
 
 
+/*
+            $SQL = "INSERT INTO publier (Type, Auteur, Zone_De_Texte, Visibilite, Texte_Nom_Entreprise, Texte_Nom_Poste, Salaire, Duree) 
+            VALUES('Emploi','Bastien', '$commentaire', '$visibilite', '$entreprise', '$poste', $remuneration, $duree)";*/
+
+            $SQL = "INSERT INTO publier (Type, Auteur, Zone_De_Texte, Visibilite, Texte_Nom_Entreprise, Texte_Nom_Poste, Salaire, Duree) 
+            VALUES('Emploi','Bastien', '$commentaire', '$visibilite', '$entreprise', '$poste' , $remuneration, $duree)";
 
 
-/*            $SQL = "INSERT INTO publier (Type, Auteur, Zone_De_Texte, Visibilite)  //Adapter la requete pour un emploi
-            VALUES('Emploi','Bastien', '$message', '$visibilite')";
-*/
+
+            
             $result = mysqli_query($db_handle, $SQL);
 
             if($result){

@@ -22,7 +22,10 @@
     <input type="number" name="remuneration" id="remuneration" placeholder="Ex : 5000" size="30" maxlength="10" />
 
     <label for="duree">Durée :</label>
-    <input type="text" name="duree" id="duree" placeholder="Ex : du 01/07/18 au 01/08/18" size="30" maxlength="10" />
+    <input type="text" name="duree" id="duree" placeholder="Ex : du 01/07/18 au 01/08/18" size="30" />
+
+    <label for="commentaire">Commentaire sur l'offre :</label>
+    <input type="text" name="commentaire" id="commentaire" placeholder="Ex : Motive et souriant" size="30"  />
 
    <label for="visibilite">Choisissez la visibilité de votre publication</label><br />
        <select name="visibilite" id="visibilite">

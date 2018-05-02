@@ -10,13 +10,15 @@
 
 <p> publier un fichier </p>
 
-<form method="post" action="publierFichierTraitement.php">
+<form method="post" action="publierFichierTraitement.php" enctype="multipart/form-data">
 <p>
        <label for="legende">Légende de votre fichier</label><br />
        <textarea name="legende" id="legende"></textarea>
    </p>
 
-   <h1> Trouver un truc pour importer un fichier et le stocker dans la bdd </h1>
+    
+    <input type="file" name="fichier"/><br><br>
+
 
    <label for="visibilite">Choisissez la visibilité de votre publication</label><br />
        <select name="visibilite" id="visibilite">

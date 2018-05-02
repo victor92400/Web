@@ -21,6 +21,14 @@ if ($db_found) {
 *
 */
 
+
+/*
+ $SQL = "INSERT INTO publier (Type, Auteur, Zone_De_Texte, Visibilite, Fichier, Texte_Nom_Entreprise, Texte_Nom_Poste, Salaire, Duree)  //Requete generale
+            VALUES('Texte','Bastien', '$message', '$visibilite')";
+*/
+
+
+
     if($type == "Message"){
         echo "Vous voulez publier un message";
         echo "</br>";
