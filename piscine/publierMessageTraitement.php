@@ -1,21 +1,13 @@
 <?php
 
-    echo "publicationMessageTraitement.php";
+
+session_start();
+
     echo "</br>";
     echo "</br>";
+    include("connexion.php");
 
-    
-        echo "Vous voulez publier un message";
-        echo "</br>";
-
-        $user = "root";
-        $pass = "";
-        $db = "piscine";
-        $server = "127.0.0.1";
-
-        $db_handle = mysqli_connect($server, $user, $pass); 
-        $db_found = mysqli_select_db($db_handle, $db);
-        if ($db_found) {
+        
            
             $message=$_POST["publierMessage"];
             $visibilite=$_POST["visibilite"];
@@ -38,10 +30,14 @@
                 echo"</br>";
                 echo "Message publié et ajouté à la bdd";
                 echo"</br>";
-            }
-            else{
-                echo"Erreur : la publication a echoue (verifiez les caracteres speciaux";
-            }
+
+            
+            ?>          
+                <input type="button" value="Revenir à l'écran d'accueil" class="homebutton" id="btnHome" 
+                onClick="document.location.href='index.php'" />
+            <?php
+           
+            
 
             
 

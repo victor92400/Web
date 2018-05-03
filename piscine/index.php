@@ -1,5 +1,13 @@
 
-<!-- Page d'accueil du site, après la page de login -->
+<?php
+session_start();
+/*
+Inserer le code pour definir d'autres utilisateurs connectes
+*/
+
+$_SESSION['no_utilisateur_actuel'] = 2;
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -7,19 +15,16 @@
         <meta charset="UTF-8">
         
         <title>Accueil</title>
-
            
              
     </head>
 
-    <body style="background-color : #E0F2F7">
-        <div id="header"> <!-- Boutons de la barre de haut de page -->
-            <fieldset>
-                <a href="profil.php">Mon profil</a> </p>
-                <a href="notifications.php">Mes notifications</a> </br>
-            </fieldset>
-            </br></br>
-        </div>
+    <body style="background-color : #E0F2F7"> <!-- Jolie couleur de fond -->
+        <?php include("entete.php"); ?>
+
+
+
+
 
 
 <!-- Onglet publier -->
@@ -39,45 +44,75 @@
 
  <!-- Fil d'actualité -->
  <fieldset>
+
+
+ <form method="post" action="index.php">
+    <fieldset>
+    
+    <label for="triPubli">Trier les publications par</label><br />
+       <select name="triPubli" id="triPubli">
+           <option value="Message">Message</option>
+           <option value="Fichier">Fichier</option>
+           <option value="Emploi">Emploi</option>
+       </select>
+       <input type="submit" value="Trier" />
+    </fieldset>
+ </form>
+
+
     <?php
         echo "<p> <font color=blue font face='verdana' size='5pt'>Fil d'actualité</font> </p>";
 
-        $user = "root";
-        $pass = "";
-        $db = "piscine";
-        $server = "127.0.0.1";
+        include("connexion.php");
+        $triPubli="Message";
 
-        $db_handle = mysqli_connect($server, $user, $pass); 
-        $db_found = mysqli_select_db($db_handle, $db);
-        if ($db_found) {
+        $triPubli=$_POST["triPubli"];
 
-            $SQL = "SELECT * FROM publier ORDER BY Date";
-            $result = mysqli_query($db_handle, $SQL);
+       
 
-            echo "<br> <br>";
+            if($triPubli=="Message"){
+                $SQL = "SELECT * FROM publier WHERE Type= 'Texte' ORDER BY Date DESC";
+                $result = mysqli_query($db_handle, $SQL);
 
-            while($row = $result->fetch_assoc()) {   //technique 2
-                echo $row["Auteur"]. " a publié un " . $row["Type"]. " le " . $row["Date"]." : </br> " . $row["Zone_De_Texte"]. "<br> <br> <br> ";
-                if($row == 'Fichier'){
-                    echo $row["Fichier"];
+                echo "<br> <br>";
+
+                while($row = $result->fetch_assoc()) {   //affichage du resultat
+                    echo $row["Auteur"]. " a publié un message le " . $row["Date"]." : </br> " . $row["Zone_De_Texte"]. "<br> ";
+                    echo"_______________________________________________________________________________________________";
+                    echo "<br> <br>";
+                }
+            }
+
+            if($triPubli=="Fichier"){
+                $SQL = "SELECT * FROM publier WHERE Type= 'Fichier' ORDER BY Date DESC";
+                $result = mysqli_query($db_handle, $SQL);
+
+                echo "<br> <br>";
+
+                while($row = $result->fetch_assoc()) {   //affichage du resultat
+                    echo $row["Auteur"]. " a publié un fichier le " . $row["Date"]." : </br> " . $row["Fichier"]. "</br> Légende :" . $row["Zone_De_Texte"]. "<br> <br> <br> ";
+                    echo"_______________________________________________________________________________________________";
+                    echo "<br><br> ";
                 }
 
-               // echo "id: " . $row["Type"]. " - type: " . $row["Auteur"]. " +++ " . $row["Zone_De_Texte"]. "<br>";
             }
 
+            if($triPubli=="Emploi"){
+                $SQL = "SELECT * FROM publier WHERE Type= 'Emploi' ORDER BY Date DESC";
+                $result = mysqli_query($db_handle, $SQL);
 
+                echo "<br> <br>";
 
+                while($row = $result->fetch_assoc()) {   //affichage du resultat
+                    echo $row["Auteur"]. " a publié une offre d'emploi le " . $row["Date"]." : </br>Entreprise : " . $row["Texte_Nom_Entreprise"]. 
+                    "</br>Intitulé du poste : " . $row["Texte_Nom_Poste"]. "</br>Rémunération :" . $row["Salaire"]. "<br> ";
+                    echo" Commentaire : ". $row["Zone_De_Texte"];
+                    echo"<br> <br>_________________________________________________________________________________________";
+                    echo "<br> <br>";
+                }
             }
-            else{
-                echo"db not found";
-            }
-
-           
-
+            
     ?>
-
-
-
 
     </fieldset>
     </body>

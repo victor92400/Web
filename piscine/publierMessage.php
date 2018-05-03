@@ -1,4 +1,6 @@
-
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,13 +9,14 @@
     </head>
 
 <body>
+<?php include("entete.php"); ?>
 
 <p> Publication d'un gentil message </p>
 
 <form method="post" action="publierMessageTraitement.php">
 <p>
        <label for="publierMessage">Publier un message</label><br />
-       <textarea name="publierMessage" id="publierMessage"></textarea>
+       <textarea name="publierMessage" id="publierMessage" rows="10" cols="50"></textarea>
    </p>
 
     <label for="visibilite">Choisissez la visibilité de votre publication</label><br />

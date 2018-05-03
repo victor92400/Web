@@ -1,4 +1,9 @@
 <?php
+    
+    session_start();
+    
+    include("entete.php");
+    include("connexion.php");
 
     echo "publicationMessageTraitement.php";
     echo "</br>";
@@ -8,14 +13,7 @@
         echo "Vous voulez publier une offre d'emploi";
         echo "</br>";
 
-        $user = "root";
-        $pass = "";
-        $db = "piscine";
-        $server = "127.0.0.1";
-
-        $db_handle = mysqli_connect($server, $user, $pass); 
-        $db_found = mysqli_select_db($db_handle, $db);
-        if ($db_found) {
+    
            
             $entreprise=$_POST["entreprise"];
             $poste=$_POST["poste"];
@@ -35,8 +33,8 @@
             $SQL = "INSERT INTO publier (Type, Auteur, Zone_De_Texte, Visibilite, Texte_Nom_Entreprise, Texte_Nom_Poste, Salaire, Duree) 
             VALUES('Emploi','Bastien', '$commentaire', '$visibilite', '$entreprise', '$poste', $remuneration, $duree)";*/
 
-            $SQL = "INSERT INTO publier (Type, Auteur, Zone_De_Texte, Visibilite, Texte_Nom_Entreprise, Texte_Nom_Poste, Salaire, Duree) 
-            VALUES('Emploi','Bastien', '$commentaire', '$visibilite', '$entreprise', '$poste' , $remuneration, $duree)";
+            $SQL = "INSERT INTO publier (Type, Auteur, Zone_De_Texte, Visibilite, Texte_Nom_Entreprise, Texte_Nom_Poste, Salaire) 
+            VALUES('Emploi','Bastien', '$commentaire', '$visibilite', '$entreprise', '$poste' , $remuneration)";
 
 
 
@@ -45,12 +43,14 @@
 
             if($result){
                 echo"</br>";
-                echo "Message publié et ajouté à la bdd";
+                echo "Offre d'emploi publiée et ajoutée à la bdd";
                 echo"</br>";
-            }
-            else{
-                echo"Publication failed";
-            }
+
+                ?>          
+                <input type="button" value="Revenir à l'écran d'accueil" class="homebutton" id="btnHome" 
+                onClick="document.location.href='index.php'" />
+                <?php
+            
 
             
 

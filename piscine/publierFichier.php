@@ -1,4 +1,6 @@
-
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,12 +10,14 @@
 
 <body>
 
+<?php include("entete.php"); ?>
+
 <p> publier un fichier </p>
 
 <form method="post" action="publierFichierTraitement.php" enctype="multipart/form-data">
 <p>
        <label for="legende">Légende de votre fichier</label><br />
-       <textarea name="legende" id="legende"></textarea>
+       <textarea name="legende" id="legende" rows="5" cols="50"></textarea>
    </p>
 
     

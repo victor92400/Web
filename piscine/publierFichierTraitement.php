@@ -1,5 +1,11 @@
 <?php
 
+session_start();
+
+
+    include("entete.php");
+    
+
     echo "publicationMessageTraitement.php";
     echo "</br>";
     echo "</br>";
@@ -7,15 +13,9 @@
     
         echo "Vous voulez publier un fichier";
         echo "</br>";
+        include("connexion.php");
 
-        $user = "root";
-        $pass = "";
-        $db = "piscine";
-        $server = "127.0.0.1";
 
-        $db_handle = mysqli_connect($server, $user, $pass); 
-        $db_found = mysqli_select_db($db_handle, $db);
-        if ($db_found) {
            
             $legende=$_POST["legende"];
 
@@ -62,12 +62,14 @@
 
             if($result){
                 echo"</br>";
-                echo "Message publié et ajouté à la bdd";
+                echo "Fichier publié et ajouté à la bdd";
                 echo"</br>";
-            }
-            else{
-                echo"Publication failed";
-            }
+
+                ?>          
+                <input type="button" value="Revenir à l'écran d'accueil" class="homebutton" id="btnHome" 
+                onClick="document.location.href='index.php'" />
+            <?php
+            
 /*
 
 Affichage des fichiers importes marche pas
