@@ -7,6 +7,7 @@
 <body style="background-color : #E0F2F7"> <!-- Jolie couleur de fond --></body>
 
 
+
 <div id="header"> 
             <fieldset>
 
@@ -23,7 +24,7 @@ while($row = $result->fetch_assoc()) {
 mysqli_close($db_handle);
 
 ?>
-                <a href="mon_profil.php">Mon profil</a> </p>
+                <a href="mon_profil.php">Mon profil</a> </br>
                 <a href="notifications.php">Mes notifications</a> </br>
                 <a href="amis.php">Mes relations</a> </br>
 

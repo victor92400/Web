@@ -153,18 +153,36 @@ $_SESSION['no_utilisateur_actuel'] = $id;
                         if(!$result4){echo"result4 pas marche";}
 
                         if($result4->num_rows == 0){echo"";} //Ne rien afficher si pas de commentaires
-                    else{
-                        echo "Commentaires : <br>" ;
-                    ?>
-                    <fieldset>
-                    <?php
-                    while($row4 = $result4->fetch_assoc() ) {
-                        echo $row4["Commentaire"] . "<br>";
-                    }
-                    ?>
-                    </fieldset> <p>
-                    <?php
-                    }
+                        else{
+                            echo "Commentaires : <br>" ;
+                            ?>
+                            <fieldset>
+                            <?php
+                            while($row4 = $result4->fetch_assoc() ) {
+
+                                $auteur_commentaire=$row4["no_utilisateur_actuel"];
+                                
+                                $SQL5="SELECT * FROM utilisateur WHERE no_utilisateur = '$auteur_commentaire'  ";  //Affichage des auteurs des commentaires
+                                $result5 = mysqli_query($db_handle, $SQL5); 
+                                if(!$result5){echo"result5 pas marche";}
+
+                                
+                                    while($row5 = $result5->fetch_assoc() ) {  //Boutons de profil des auteurs des commentaires
+
+                                        ?>
+                                        <form method="POST" action="profil.php">  
+                                            <input type='submit' name='Profil' value='<?php echo $row5["Prenom"] . " " .$row5["Nom"]; ?>' />
+                                            <input type="hidden" name="no_utilisateur_parametre" value="<?php echo $auteur_commentaire; ?>"/>
+                                          
+                                        </form>
+                                        <?php
+                                        echo $row4["Commentaire"] . "<br><br>";
+                                }
+                            }
+                            ?>
+                            </fieldset> <p>
+                            <?php
+                        }
 
                         echo"_______________________________________________________________________________________________";
                     echo "<br> <br>";
@@ -210,22 +228,6 @@ $_SESSION['no_utilisateur_actuel'] = $id;
                     echo '<img width="250" height="250" src= "'.$row["Fichier"].'"/>';
 
 
-    /*               
-                    $src='\images\corporate.png';
-                    echo "<img src=".$src.">  <br>";
-
-                 
-                    $file_path = '\images\\';
-                    $src=$file_path.$row['Fichier'];
-                    echo "<img src=".$src.">  <br>";
-
-                $image = $row["Fichier"].'\a.jpg';
-
-                $imageData = base64_encode(file_get_contents($image));
-                echo '<img src="data:image/jpeg;base64,'.$imageData.'">';   
-
-*/
-
 
 
 
@@ -263,15 +265,33 @@ $_SESSION['no_utilisateur_actuel'] = $id;
                     if($result4->num_rows == 0){echo"";} //Ne rien afficher si pas de commentaires
                     else{
                         echo "Commentaires : <br>" ;
-                    ?>
-                    <fieldset>
-                    <?php
-                    while($row4 = $result4->fetch_assoc() ) {
-                        echo $row4["Commentaire"] . "<br>";
-                    }
-                    ?>
-                    </fieldset> <p>
-                    <?php
+                        ?>
+                        <fieldset>
+                        <?php
+                        while($row4 = $result4->fetch_assoc() ) {
+
+                            $auteur_commentaire=$row4["no_utilisateur_actuel"];
+                            
+                            $SQL5="SELECT * FROM utilisateur WHERE no_utilisateur = '$auteur_commentaire'  ";  //Affichage des auteurs des commentaires
+                            $result5 = mysqli_query($db_handle, $SQL5); 
+                            if(!$result5){echo"result5 pas marche";}
+
+                            
+                                while($row5 = $result5->fetch_assoc() ) {
+
+                                    ?>
+                                    <form method="POST" action="profil.php"> 
+                                        <input type='submit' name='Profil' value='<?php echo $row5["Prenom"] . " " .$row5["Nom"]; ?>' />
+                                        <input type="hidden" name="no_utilisateur_parametre" value="<?php echo $auteur_commentaire; ?>"/>
+                                        
+                                    </form>
+                                    <?php
+                                    echo $row4["Commentaire"] . "<br><br>";
+                            }
+                        }
+                        ?>
+                        </fieldset> <p>
+                        <?php
                     }
 
 
@@ -348,15 +368,33 @@ $_SESSION['no_utilisateur_actuel'] = $id;
                     if($result4->num_rows == 0){echo"";} //Ne rien afficher si pas de commentaires
                     else{
                         echo "Commentaires : <br>" ;
-                    ?>
-                    <fieldset>
-                    <?php
-                    while($row4 = $result4->fetch_assoc() ) {
-                        echo $row4["Commentaire"] . "<br>";
-                    }
-                    ?>
-                    </fieldset> <p>
-                    <?php
+                        ?>
+                        <fieldset>
+                        <?php
+                        while($row4 = $result4->fetch_assoc() ) {
+
+                            $auteur_commentaire=$row4["no_utilisateur_actuel"];
+                            
+                            $SQL5="SELECT * FROM utilisateur WHERE no_utilisateur = '$auteur_commentaire'  ";  //Affichage des auteurs des commentaires
+                            $result5 = mysqli_query($db_handle, $SQL5); 
+                            if(!$result5){echo"result5 pas marche";}
+
+                            
+                                while($row5 = $result5->fetch_assoc() ) {
+
+                                    ?>
+                                    <form method="POST" action="profil.php"> 
+                                        <input type='submit' name='Profil' value='<?php echo $row5["Prenom"] . " " .$row5["Nom"]; ?>' />
+                                        <input type="hidden" name="no_utilisateur_parametre" value="<?php echo $auteur_commentaire; ?>"/>
+                                        
+                                    </form>
+                                    <?php
+                                    echo $row4["Commentaire"] . "<br><br>";
+                            }
+                        }
+                        ?>
+                        </fieldset> <p>
+                        <?php
                     }
 
 

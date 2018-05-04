@@ -12,7 +12,8 @@ session_start();
 
 <?php include("entete.php"); ?>
 
-<p> publier une offre d'emploi </p>
+<p> <font color=blue font face='verdana' size='3pt'>Publiez une offre d'emploi</font> </p>
+
 <fieldset>
 <form method="post" action="publierEmploiTraitement.php">
 

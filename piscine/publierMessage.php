@@ -11,7 +11,8 @@ session_start();
 <body>
 <?php include("entete.php"); ?>
 
-<p> Publication d'un gentil message </p>
+<p> <font color=blue font face='verdana' size='3pt'>Publiez un gentil message</font> </p>
+
 
 <form method="post" action="publierMessageTraitement.php">
 <p>

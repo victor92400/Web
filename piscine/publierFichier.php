@@ -12,7 +12,8 @@ session_start();
 
 <?php include("entete.php"); ?>
 
-<p> publier un fichier </p>
+<p> <font color=blue font face='verdana' size='3pt'>Publiez un fichier à votre réseau</font> </p>
+
 
 <form method="post" action="publierFichierTraitement.php" enctype="multipart/form-data">
 <input type="file" name="filep">
