@@ -36,7 +36,7 @@ include("connexion.php");
 
                 $result = mysqli_query($db_handle, $SQL);
 
-                if($result->num_rows == 0){echo"<br> Aucun résultat pour la recherche " 
+                if($result->num_rows == 0){echo"<br> Aucun résultat pour la recherche " //Test si pas de resultats
                     . $recherche . " :( " ;
                 }
                 else{echo"Résultats pour la recherche \"$recherche\" : ";}
@@ -51,19 +51,19 @@ include("connexion.php");
                     ?>
                         <form method="POST" action="profil.php"> 
                             <input type='submit' name='Profil' value='<?php echo $row["Prenom"]. " " . $row["Nom"]; ?>' />
-                            <input type="hidden" name="no_utilisateur_recherche" value="<?php echo $row["no_utilisateur"]; ?>"/>
+                            <input type="hidden" name="no_utilisateur_parametre" value="<?php echo $row["no_utilisateur"]; ?>"/> <!-- Bouton de Profil -->
                         </form>
 
                         <form method="POST" action="amitie.php"> 
                             <input type='submit' name='Amis' value='Ajouter cette personne à vos relations' />
-                            <input type="hidden" name="no_utilisateur_recherche" value="<?php echo $row["no_utilisateur"]; ?>"/>
+                            <input type="hidden" name="no_utilisateur_parametre" value="<?php echo $row["no_utilisateur"]; ?>"/> <!-- Bouton d'ajout en ami -->
                         </form>
 
                     <?php
                     
                         echo $row["Email"]. 
                          "<br> ID système : " . $row["no_utilisateur"] . 
-                         "<br> Date de naissance : " . $row["Naissance"] .
+                         "<br> Date de naissance : " . $row["Naissance"] . //AFfichage des donnees de la personne recherchee
                          "<br> Sexe : " . $row["Sexe"] . 
                          "<br> Statut : " . $row["Statut"] .
                          "<br> Adresse : " . $row["Adresse"] . 

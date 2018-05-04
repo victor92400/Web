@@ -11,7 +11,7 @@ include("entete.php");
 include("connexion.php");
 
 
-echo "Vos nouvelles relations : <br> <br>";
+echo "Vos amis : <br> <br>";
 
 $SQL="SELECT * FROM relations WHERE no_utilisateur1 = $no_utilisateur OR no_utilisateur2 = $no_utilisateur ";
 $result = mysqli_query($db_handle, $SQL);

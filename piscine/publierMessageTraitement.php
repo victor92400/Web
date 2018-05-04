@@ -12,6 +12,8 @@ session_start();
             $message=$_POST["publierMessage"];
             $visibilite=$_POST["visibilite"];
 
+            $no_utilisateur_actuel = $_SESSION['no_utilisateur_actuel'];
+
             if($visibilite == 'Amis'){
                 $visibilite = 0;
             }
@@ -21,8 +23,8 @@ session_start();
 
 
 
-            $SQL = "INSERT INTO publier (Type, Auteur, Zone_De_Texte, Visibilite) 
-            VALUES('Texte','Bastien', '$message', '$visibilite')";
+            $SQL = "INSERT INTO publier (Type, no_utilisateur, Zone_De_Texte, Visibilite) 
+            VALUES('Texte','$no_utilisateur_actuel', '$message', '$visibilite')";
             
             $result = mysqli_query($db_handle, $SQL);
 

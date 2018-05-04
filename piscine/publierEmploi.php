@@ -39,6 +39,9 @@ session_start();
 
    <input type="submit" value="Publier" />
 </form>
+<form method="post" action="index.php">
+   <input type="submit" value="Annuler" />
+</form>
 </fieldset>
 
 

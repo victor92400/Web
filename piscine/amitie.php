@@ -3,7 +3,7 @@ session_start();
 
 include("entete.php");
 include("connexion.php");
-$no_utilisateur_recherche=$_POST["no_utilisateur_recherche"];
+$no_utilisateur_recherche=$_POST["no_utilisateur_parametre"];
 
 $no_utilisateur_actuel = $_SESSION['no_utilisateur_actuel'];
 

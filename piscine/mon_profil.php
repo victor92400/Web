@@ -6,7 +6,8 @@ session_start();
 
 include("entete.php");
 include("connexion.php");
-$no_utilisateur=$_POST["no_utilisateur_parametre"];
+
+$no_utilisateur = $_SESSION['no_utilisateur_actuel'];
 
 
 
@@ -17,7 +18,7 @@ $result = mysqli_query($db_handle, $SQL);
 while($row = $result->fetch_assoc()) {   //affichage du resultat
     
     echo $row["Prenom"]. " " . $row["Nom"].
-         "<br> Email : " . $row["Email"]. 
+         "<br>Email : " . $row["Email"]. 
          "<br> ID système : " . $row["no_utilisateur"] . 
          "<br> Date de naissance : " . $row["Naissance"] .
          "<br> Sexe : " . $row["Sexe"] . 

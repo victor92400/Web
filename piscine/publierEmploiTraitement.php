@@ -13,7 +13,8 @@
         echo "Vous voulez publier une offre d'emploi";
         echo "</br>";
 
-    
+            $no_utilisateur_actuel = $_SESSION['no_utilisateur_actuel'];
+
            
             $entreprise=$_POST["entreprise"];
             $poste=$_POST["poste"];
@@ -29,12 +30,8 @@
             else{$visibilite = 1;}
 
 
-/*
-            $SQL = "INSERT INTO publier (Type, Auteur, Zone_De_Texte, Visibilite, Texte_Nom_Entreprise, Texte_Nom_Poste, Salaire, Duree) 
-            VALUES('Emploi','Bastien', '$commentaire', '$visibilite', '$entreprise', '$poste', $remuneration, $duree)";*/
-
-            $SQL = "INSERT INTO publier (Type, Auteur, Zone_De_Texte, Visibilite, Texte_Nom_Entreprise, Texte_Nom_Poste, Salaire) 
-            VALUES('Emploi','Bastien', '$commentaire', '$visibilite', '$entreprise', '$poste' , $remuneration)";
+            $SQL = "INSERT INTO publier (Type, no_utilisateur, Zone_De_Texte, Visibilite, Texte_Nom_Entreprise, Texte_Nom_Poste, Salaire) 
+            VALUES('Emploi','$no_utilisateur_actuel', '$commentaire', '$visibilite', '$entreprise', '$poste' , $remuneration)";
 
 
 
