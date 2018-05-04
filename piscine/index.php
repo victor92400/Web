@@ -61,8 +61,7 @@ $_SESSION['no_utilisateur_actuel'] = 2;
 
 
     <?php
-        echo "<p> <font color=blue font face='verdana' size='5pt'>Fil d'actualité</font> </p>";
-
+        
         include("connexion.php");
         $triPubli="Message";
 
@@ -77,7 +76,14 @@ $_SESSION['no_utilisateur_actuel'] = 2;
                 echo "<br> <br>";
 
                 while($row = $result->fetch_assoc()) {   //affichage du resultat
-                    echo $row["Auteur"]. " a publié un message le " . $row["Date"]." : </br> " . $row["Zone_De_Texte"]. "<br> ";
+                    ?>
+                    <form method="POST" action="commentaire.php"> 
+                        <input type='submit' name='Profil' value='<?php echo $row["no_utilisateur"]; ?>' />
+                        <input type="hidden" name="no_utilisateur_auteur_publication" value="<?php echo $row["no_utilisateur"]; ?>"/>
+                    </form>
+                    <?php
+
+                    echo $row["no_utilisateur"]. " a publié un message le " . $row["Date"]." : </br> " . $row["Zone_De_Texte"]. "<br> ";
                     echo"_______________________________________________________________________________________________";
                     echo "<br> <br>";
                 }
@@ -90,7 +96,7 @@ $_SESSION['no_utilisateur_actuel'] = 2;
                 echo "<br> <br>";
 
                 while($row = $result->fetch_assoc()) {   //affichage du resultat
-                    echo $row["Auteur"]. " a publié un fichier le " . $row["Date"]." : </br> " . $row["Fichier"]. "</br> Légende :" . $row["Zone_De_Texte"]. "<br> <br> <br> ";
+                    echo $row["no_utilisateur"]. " a publié un fichier le " . $row["Date"]." : </br> " . $row["Fichier"]. "</br> Légende :" . $row["Zone_De_Texte"]. "<br> <br> <br> ";
                     echo"_______________________________________________________________________________________________";
                     echo "<br><br> ";
                 }
@@ -104,7 +110,7 @@ $_SESSION['no_utilisateur_actuel'] = 2;
                 echo "<br> <br>";
 
                 while($row = $result->fetch_assoc()) {   //affichage du resultat
-                    echo $row["Auteur"]. " a publié une offre d'emploi le " . $row["Date"]." : </br>Entreprise : " . $row["Texte_Nom_Entreprise"]. 
+                    echo $row["no_utilisateur"]. " a publié une offre d'emploi le " . $row["Date"]." : </br>Entreprise : " . $row["Texte_Nom_Entreprise"]. 
                     "</br>Intitulé du poste : " . $row["Texte_Nom_Poste"]. "</br>Rémunération :" . $row["Salaire"]. "<br> ";
                     echo" Commentaire : ". $row["Zone_De_Texte"];
                     echo"<br> <br>_________________________________________________________________________________________";

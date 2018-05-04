@@ -48,10 +48,9 @@ include("connexion.php");
                 
 
                 while($row = $result->fetch_assoc()) {   //affichage du resultat
-                    echo $row["Prenom"]. " " . $row["Nom"] . " :";
                     ?>
                         <form method="POST" action="profil.php"> 
-                            <input type='submit' name='Profil' value='Voir le profil' />
+                            <input type='submit' name='Profil' value='<?php echo $row["Prenom"]. " " . $row["Nom"]; ?>' />
                             <input type="hidden" name="no_utilisateur_recherche" value="<?php echo $row["no_utilisateur"]; ?>"/>
                         </form>
 
