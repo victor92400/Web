@@ -6,8 +6,13 @@ session_start();
 
 include("entete.php");
 include("connexion.php");
-$no_utilisateur=$_POST["no_utilisateur_recherche"];
-echo $no_utilisateur;
+if($no_utilisateur=$_POST["no_utilisateur_recherche"]){
+    $no_utilisateur=$_POST["no_utilisateur_recherche"];
+    echo $no_utilisateur;
+}
+else{
+    $no_utilisateur = $_SESSION['no_utilisateur_actuel'];
+}
 
 
 /////// AFFICHER LE PROFIL AVEC LE TRUC DE VICTOR ////////////
